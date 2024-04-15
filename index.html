@@ -15,7 +15,7 @@
 
 <script type="text/babel">
     const root = document.getElementById("root");
-    const Title = (
+    const Title = () => (
     <h3 
         id="title"
         onMouseEnter={() => console.log("mouse Enter")}
@@ -24,7 +24,7 @@
     </h3>
     );
 
-    const Btn = (
+    const Button = () => (
         <button
             style={{backgroundColor: "blue"}}
             onClick={() => console.log(" i am clicked")}
@@ -32,21 +32,13 @@
             Click me
         </button>
     );
-    // const h3 = React.createElement(
-    //     "h3", 
-    //     {
-    //         onMouseEnter: () => console.log("mouse Enter")
-    //     },
-    //     "hello i am a span");
-    // const btn = React.createElement(
-    //     "button", 
-    // {
-    //     onClick: () => console.log(" i am clicked")
-    // }, 
-    //     "Click me"
-    // );
-    const container = React.createElement("div", null, [Title, Btn]);
+    const Container = (
+        <div>
+            <Title />
+            <Button />
+        </div>
+    );
 
-    ReactDOM.render(container, root);
+    ReactDOM.render(Container, root);
 </script>
 </html>
