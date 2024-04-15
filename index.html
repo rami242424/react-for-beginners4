@@ -15,24 +15,21 @@
 
 <script type="text/babel">
     const root = document.getElementById("root");
-    let counter = 0;
-    function countUp(){
-        counter = counter  + 1;
-        render();
+    // React.js 어플내에서 데이터를 보관하고, 자동으로 리렌더링을 일으킬 수 있는 방법 => State!!
+    function App() {
+        const data = React.useState(0);
+        console.log(data); 
+        // const data = React.useState(); 일때 콘솔에 찍힌 data 값 👇
+        // [undefined, ƒ] : undefined = data, ƒ = data를 바꿀 때 사용하는 함수]
+        return(
+            <div>
+                <h3>Total Clicks: 0 </h3>
+                <button>Click me</button>
+            </div>
+        );
     }
 
-    function render(){
-        ReactDOM.render(<Container />, root);
-    }
-    const Container = () => (
-        <div>
-            <h3>Total Clicks: {counter} </h3>
-            <button onClick={countUp}>Click me</button>
-        </div>
-    );
-
-    // 페이지가 로드되면 자동으로 실행 될 코드 > 그 후에 Container 코드가 React Element 된다.
-    // ReactDOM.render(<Container />, root);
-    render();
+    ReactDOM.render(<App />, root);
+    
 </script>
 </html>
