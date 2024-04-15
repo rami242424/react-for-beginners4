@@ -17,35 +17,21 @@
     const root = document.getElementById("root");
     // React.js 어플내에서 데이터를 보관하고, 자동으로 리렌더링을 일으킬 수 있는 방법 => State!!
     function App() {
-        // 배열에서 요소들을 꺼내서 이름을 부여하는 방법 1))        
-        // const data = React.useState(0);
-        // console.log(data); 
-        // const data = React.useState(); 일때 콘솔에 찍힌 data 값 👇
-        // [undefined, ƒ] : undefined = data, ƒ = data를 바꿀 때 사용하는 함수]
-        // 기존함수와 비교하면
-        // let counter = 0; 👉 undefined
-        // function countUp() {
-            //code
-        // // } 👉 ƒ 이다.
-        // const counter = data[0];
-        // const modifier = data[1];
-        // console.log(counter);
-
-        // 배열에서 요소들을 꺼내서 이름을 부여하는 방법 2)) 
-        // counter : 우리가 담으려는 data값
-        // modifier(=setCounter) : 이 data값을 바꿀때 사용할 modifier(한정어 수식어)
         const [counter, setCounter] = React.useState(0);
         function onClick(){
-            setCounter(counter + 1) // ()안에 어떤값을 부여하든 modifier함수(=setCounter)는 그 값으로 업데이트하고 리렌더링을 일으킨다.
-            console.log(counter);
+            return
+            setCounter(counter + 1); // ()안에 어떤값을 부여하든 modifier함수(=setCounter)는 그 값으로 업데이트하고 리렌더링을 일으킨다.
         }
+            console.log("i am renderd");
+            console.log(counter);
         return(
             <div>
                 <h3>Total Clicks: {counter} </h3>
                 <button onClick={onClick}>Click me</button>
             </div>
         );
-    }
+        }
+    
 
     ReactDOM.render(<App />, root);
     
