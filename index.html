@@ -19,8 +19,10 @@
     function App() {
         const [counter, setCounter] = React.useState(0);
         function onClick(){
-            return
-            setCounter(counter + 1); // ()안에 어떤값을 부여하든 modifier함수(=setCounter)는 그 값으로 업데이트하고 리렌더링을 일으킨다.
+                // ()안에 어떤값을 부여하든 modifier함수(=setCounter)는 그 값으로 업데이트하고 리렌더링을 일으킨다.
+                // setCounter(counter + 1); 
+                // setCounter 대신 current 를 사용함으로써 확실히 현재 값이라는 걸 보장한다.
+                setCounter((current) => current + 1)
         }
             console.log("i am renderd");
             console.log(counter);
