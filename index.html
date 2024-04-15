@@ -14,28 +14,48 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
 <script type="text/babel">
-    const root = document.getElementById("root");
-    // React.js 어플내에서 데이터를 보관하고, 자동으로 리렌더링을 일으킬 수 있는 방법 => State!!
     function App() {
-        const [counter, setCounter] = React.useState(0);
-        function onClick(){
-                // ()안에 어떤값을 부여하든 modifier함수(=setCounter)는 그 값으로 업데이트하고 리렌더링을 일으킨다.
-                // setCounter(counter + 1); 
-                // setCounter 대신 current 를 사용함으로써 확실히 현재 값이라는 걸 보장한다.
-                setCounter((current) => current + 1)
-        }
-            console.log("i am renderd");
-            console.log(counter);
+        const [minutes, setMinutes] = React.useState();
+        // 아래 props값으로 input값을 구하면, 입력 된 순간의 값만 알 수 있다.
+        // 12를 입력해도, 1 따로 2따로 이런식으로..
+        // const onChange = (props) => {
+        //     console.log(props.nativeEvent.data);
+        // };
+
+        // event 값으로 input값을 구하면, 연속적으로 입력된 모든 값을 받을 수 있다.
+        const onChange = (event) => {
+            // console.log(event.target.value);
+            setMinutes(event.target.value);
+        };
         return(
             <div>
-                <h3>Total Clicks: {counter} </h3>
-                <button onClick={onClick}>Click me</button>
+                <h1>Super Converter</h1>
+                {/*아래와 같이 label과 input을 같은 for와 id로 통일 시킴으로써, label을 클릭해도 input 칸이 함께 선택된다.
+                [label 에서 for은 js 코드임으로 html로 for이 아니라, htmlFor 사용해야 한다.*/}
+                {/*
+                <label for="minutes">Minutes</label>
+                <input id= "minutes" placeholder = "Minutes" type="number" />
+                <label for="hours">Hours</label>
+                <input id="hours" placeholder = "Hours" type="number"/>
+                */}
+                <label htmlFor="minutes">Minutes</label>
+                <input 
+                    value={minutes} 
+                    id= "minutes" 
+                    placeholder = "Minutes" 
+                    type="number" 
+                    onChange={onChange}
+                />
+                {/*변화 된 인풋값을 {minutes}에서 출력할 수 있다. */}
+                <h4>you want to convert {minutes}</h4>
+                <label htmlFor="hours">Hours</label>
+                <input id="hours" placeholder = "Hours" type="number"/>
             </div>
-        );
+            );
         }
     
 
+    const root = document.getElementById("root");
     ReactDOM.render(<App />, root);
-    
 </script>
 </html>
