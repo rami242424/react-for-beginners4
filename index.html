@@ -18,7 +18,8 @@
     let counter = 0;
     function countUp(){
         counter = counter  + 1;
-        console.log(counter);
+        // console.log(counter);
+        ReactDOM.render(<Container />, root);
     }
     const Container = () => (
         <div>
@@ -27,6 +28,7 @@
         </div>
     );
 
+    // 페이지가 로드되면 자동으로 실행 될 코드 > 그 후에 Container 코드가 React Element 된다.
     ReactDOM.render(<Container />, root);
 </script>
 </html>
