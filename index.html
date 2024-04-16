@@ -17,11 +17,12 @@
 
 
 
-    function Btn({ text, changeValue }){
-        console.log({ text });
+    function Btn({ text, onClick }){
+        // console.log({ text });
+        console.log(text, "was rendered");
         return (
             <button 
-                onClick={changeValue}
+                onClick={onClick}
                 style={{
                     backgroundColor : "tomato",
                     color: "white",
@@ -48,7 +49,7 @@
         return(
             <div>
                 {/*커스텀 컴포넌트 : prop으로 원하는 뭐든지 사용할 수 있다.*/}
-                <Btn text={value} changeValue={WhatEver} />
+                <Btn text={value} onClick={WhatEver} />
                 <Btn text="Continue" />
             </div>
         );
