@@ -41,6 +41,10 @@
         );
     }
 
+    // Memorized feature가 존재하는 React
+    // 아래 코드를 사용함으로써 만약 props가 변경되지 않는다면 다시 그릴 필요가 없다고 말해주는 것
+    const MemorizedBtn = React.memo(Btn);
+
     function App() {
         const [value, setValue] = React.useState("Save Changes");
         const WhatEver = () => {
@@ -49,8 +53,8 @@
         return(
             <div>
                 {/*커스텀 컴포넌트 : prop으로 원하는 뭐든지 사용할 수 있다.*/}
-                <Btn text={value} onClick={WhatEver} />
-                <Btn text="Continue" />
+                <MemorizedBtn text={value} onClick={WhatEver} />
+                <MemorizedBtn text="Continue" />
             </div>
         );
     } 
