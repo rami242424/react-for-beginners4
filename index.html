@@ -17,8 +17,8 @@
 
 
 
-    function Btn(props){
-        console.log(props);
+    function Btn({ banana }){
+        console.log(banana);
         return (
             <button style={{
                 backgroundColor : "tomato",
@@ -27,7 +27,7 @@
                 border: 0,
                 borderRadius: 10, 
             }}
-            >{props.banana}
+            >{ banana }
             </button>
         );
     }
