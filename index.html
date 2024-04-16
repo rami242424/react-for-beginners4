@@ -17,16 +17,17 @@
 
 
 
-    function Btn({ text, big }){
-        console.log({ text, big });
+    function Btn({ text, changeValue }){
+        console.log({ text });
         return (
-            <button style={{
-                backgroundColor : "tomato",
-                color: "white",
-                padding: "10px, 20px",
-                border: 0,
-                borderRadius: 10, 
-                fontSize: big ? 18 : 10,
+            <button 
+                onClick={changeValue}
+                style={{
+                    backgroundColor : "tomato",
+                    color: "white",
+                    padding: "10px, 20px",
+                    border: 0,
+                    borderRadius: 10,
             }}
             >{ text }
             </button>
@@ -40,10 +41,15 @@
     }
 
     function App() {
+        const [value, setValue] = React.useState("Save Changes");
+        const WhatEver = () => {
+            setValue("Revert Changes");
+        }
         return(
             <div>
-                <Btn text="Save Changes" big={true} />
-                <Btn text="Confirm" big={false} />
+                {/*커스텀 컴포넌트 : prop으로 원하는 뭐든지 사용할 수 있다.*/}
+                <Btn text={value} changeValue={WhatEver} />
+                <Btn text="Continue" />
             </div>
         );
     } 
