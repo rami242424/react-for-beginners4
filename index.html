@@ -17,56 +17,33 @@
 
 
 
-    function Btn({ text, onClick }){
+    function Btn({ text, fontSize }){
         // console.log({ text });
         console.log(text, "was rendered");
         return (
-            <button 
-                onClick={onClick}
+            <button
                 style={{
                     backgroundColor : "tomato",
                     color: "white",
                     padding: "10px, 20px",
                     border: 0,
                     borderRadius: 10,
+                    // fontSize: fontSize,
+                    fontSize,
             }}
             >{ text }
             </button>
         );
     }
 
-    function ConfirmBtn(){
-        return(
-            <button>Confirm</button>
-        );
-    }
-
-    // Memorized feature가 존재하는 React
-    // 아래 코드를 사용함으로써 만약 props가 변경되지 않는다면 다시 그릴 필요가 없다고 말해주는 것
-    const MemorizedBtn = React.memo(Btn);
-
     function App() {
-        const [value, setValue] = React.useState("Save Changes");
-        const WhatEver = () => {
-            setValue("Revert Changes");
-        }
         return(
             <div>
-                {/*커스텀 컴포넌트 : prop으로 원하는 뭐든지 사용할 수 있다.*/}
-                <MemorizedBtn text={value} onClick={WhatEver} />
-                <MemorizedBtn text="Continue" />
+                <Btn text="Save Changes" fontSize={10} />
             </div>
         );
     } 
     
-
-
-
-
-
-
-
-
 
     const root = document.getElementById("root");
     ReactDOM.render(<App />, root);
