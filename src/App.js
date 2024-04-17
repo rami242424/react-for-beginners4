@@ -10,7 +10,12 @@ function App() {
   useEffect(() => {
     console.log("CALL the API");
   }, []);
-  console.log("Search for", keyword);
+
+  // [keyword]가 변화할 때만 코드를 실행하고, 그게 아니면 첫 렌데링이후에 실행되지 않는다.
+  useEffect(() => {
+    console.log("Search for", keyword);
+  }, [keyword]);
+
 
   return (
     <div>
