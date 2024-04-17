@@ -1,3 +1,7 @@
+// 6.2 Deps : 언제 코드가 실행 될지 결정하는 방법을 배움
+// 1. 컴포넌트가 생성되는 첫 시작점
+// 2. 무언가 update 될때 코드 실행 && 특정한 keyword가 updater 될때만 코드 실행
+
 import { useState , useEffect } from "react";
 
 function App() {
@@ -6,15 +10,23 @@ function App() {
   const onClick = () => setValue((prev) => prev + 1);
   const onChange = (event) => setKeyword(event.target.value);
   
+  // 기본
   console.log("I run all the time");
+
+  // 한번만 실행
   useEffect(() => {
-    console.log("CALL the API");
+    console.log("I run only ONCE");
   }, []);
 
-  // [keyword]가 변화할 때만 코드를 실행하고, 그게 아니면 첫 렌데링이후에 실행되지 않는다.
+  // keyword가 바뀔때 실행
   useEffect(() => {
-    console.log("Search for", keyword);
+      console.log("I run only [keyword] changes");
   }, [keyword]);
+
+  // counter가 바뀔때 실행
+  useEffect(() => {
+    console.log("I run when [counter] changes");
+  }, [counter]);
 
 
   return (
