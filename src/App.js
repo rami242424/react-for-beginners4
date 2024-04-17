@@ -12,7 +12,10 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/movie">
+        <Route path="/hello">
+          <h1>oh hello~~</h1>
+        </Route>
+        <Route path="/movie/:id">
           <Detail />
         </Route>
         <Route path="/"> {/* component 적는 곳*/}
