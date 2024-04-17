@@ -1,10 +1,28 @@
 import { useState , useEffect } from "react";
 
 function Hello() {
+  function destroyedFn(){
+    console.log("Destroyed :(");
+  }
+
+  function effectFn() {
+    console.log("Created :)");
+    return destroyedFn;
+  }
+
+  // 방법1
+  // useEffect(effectFn, []);
+  // 방법2
+  // useEffect(() => {
+  //   console.log("Created :)");
+  //   return function(){
+  //     console.log("Destroyed :(");
+  //   }
+  // }, []);
+  // 방법3 ( 더 잘쓰이는 방법)
   useEffect(() => {
     console.log("Created :)");
-    return () => 
-      console.log("Destroyed :(");
+    return () => console.log("Destroyed :(");
   }, []);
 
   return (
