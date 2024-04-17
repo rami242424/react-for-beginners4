@@ -10,11 +10,20 @@ function App() {
   const [counter, setValue] = useState(0);
   const onClick = () => setValue((prev) => prev + 1);
   
+  // useEffect 사용해보기
   console.log("I run all the time");
-  const iRunOnlyOnce = () => {
-    console.log("I run only once");
-  }
-  useEffect(iRunOnlyOnce, []);
+  // 표현빙식 1
+  // const iRunOnlyOnce = () => {
+  //   console.log("I run only once");
+  // }
+  // useEffect(iRunOnlyOnce, []);
+
+  // 표현방식 2
+  useEffect(() => {
+    console.log("CALL the API");
+  }, []);
+
+
 
   return (
     <div>
