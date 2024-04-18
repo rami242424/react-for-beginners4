@@ -1,6 +1,11 @@
 // function component는 function이며, return 후 screen에 표시
 // class component는 class이며, React.Component로 부터 확장되며, render method안에 넣어야, screen에 표시
 // class component 를 사용해야 되는 이유 => state
+// setState : state를 업데이트하고, render function을 호출한다 (렌더링 한다) => setState를 써야하는 이유
+// -------------------------
+// 문신으로 새겨야 할 만큼 중요한 것!!
+// setState를 호출할 때마다 react는 새로운 state와 함께 render function을 호출한다.
+
 import React from "react";
 
 // class => javascript 
@@ -14,12 +19,21 @@ class App extends React.Component{
 
   // add function
   add = () => {
-    console.log("I am doing add");
+    // console.log("I am doing add");
+    // this.state.count = 1; // 이렇게 직접 state를 변경할 수 없다. 왜냐면 react가 render function을 refresh하지 않는다.
+    // this.setState({ count : 1 });
+    //  this.setState({ count : this.state.count + 1 }); // 이 방식으로 하면 state에 의존하게 되고 다른 곳에서의 업데이트로 인해 문제가 생길 수 있다.
+    this.setState((current) => ({ count : current.count + 1 }));
+
   }
 
   // minus function
   minus = () => {
-    console.log("I am doing minus");
+    // console.log("I am doing minus");
+    // this.state.count = -1; // 이렇게 직접 state를 변경할 수 없다. 왜냐면 react가 render function을 refresh하지 않는다.
+    // this.setState({ count : -1 });
+    // this.setState({ count : this.state.count - 1 }); // 이 방식으로 하면 state에 의존하게 되고 다른 곳에서의 업데이트로 인해 문제가 생길 수 있다.
+    this.setState((current) => ({ count : current.count - 1 })); // this.state => current로 바꿔주기
   }
 
 
@@ -37,3 +51,4 @@ class App extends React.Component{
 }
 
 export default App;
+
