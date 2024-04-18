@@ -10,8 +10,8 @@ function App() {
   return (
     <div>
       <h1>i am in App</h1>
-      <Food name="kimchi" />
-      <div className="hello"></div>
+      <Food fav="kimchi" /> 
+      {/*food component에 fav라는 이름의 property를 kimchi라는 value로 줌*/}
     </div>
   )
 }
