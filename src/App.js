@@ -10,12 +10,12 @@ import Navigation from "./components/Navigation";
 function App(){
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Navigation />
         <Route path="/" component={Home} exact={true}/>
         <Route path="/home/detail" component={Detail} exact={true}/>
         <Route path="/about" component={About} exact={true}/>
-      </BrowserRouter>
+      </HashRouter>
       <footer></footer>
     </>
   );

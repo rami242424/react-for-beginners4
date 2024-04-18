@@ -1,8 +1,12 @@
 import React from "react";
 
-function About() {
+function About(props) {
+    console.log(props)
     return (
-        <span>About this page : ...</span>
+        <div className="about__container">
+            <span>About this page : ...</span>
+            <span>amopcdkkehiwhkdhfkjdfkjd, 1909</span>
+        </div>
     );
 }
 
