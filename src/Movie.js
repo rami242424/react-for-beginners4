@@ -1,17 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./Movie.css";
 
-// state가 필요없는 경우 function component로 사용하면 된다 (class component 사용할 필요가 없다.)
-
-function Movie({ id, year, title, summary, poster }){
+function Movie({ id, year, title, summary, poster, key }){
     return (
-        <div>
-            <h2>{ title } </h2>
+        <div class="movies__movie">
+            <img src={poster} alt={title} title={title} />
+            <div class="movie_data">
+                <h3 class="movie_title">{title}</h3>
+                <h5 class="movie_year">{year}</h5>
+                <p class="movie_summary">{summary}</p>
+            </div>
         </div>
     );
 }
 
 Movie.propTypes = {
+    key: PropTypes.number.isRequired,
     id: PropTypes.number.isRequired,
     year: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
