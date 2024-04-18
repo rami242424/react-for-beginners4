@@ -1,24 +1,26 @@
 import React from "react";
 
-// 영화 클릭없이 직접 movie_detail을 입력하여 들어가면, 콘솔에서 state가 undefined로 뜬다. => 클릭한게 없으니 영화를 특정하지 않아서 정보를 받아 올 수 없음.
-// function Detail({location}){
-//     console.log(location);
-//     return(
-//         <span>I am from Detail in Home</span>
-//     );
-// }
-
 class Detail extends React.Component{
     componentDidMount(){
-        const { location } = this.props;
-        console.log(location.state);
+        // console.log(this.props); // history 정보도 나온다.
+        const { location, history } = this.props;
+        // console.log(location.state); // undefined가 나온다(movie-detail로 직접 이동했을 때)
+        if(location.state === undefined){
+            // redirect 할거다 (home으로 돌아온다)
+            history.push("/");
+        }
     }
 
-
+    // render 실행 후 > componentDidMount 실행
     render(){
-        return (
-            <span>I am from Detail in Home</span>
-        );
+        const { location } = this.props;
+        if (location.state) {
+            return (
+                <span>{location.state.title}</span>
+            );
+        } else {
+            return null;
+        }
     }
 }
 
