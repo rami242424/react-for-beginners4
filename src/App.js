@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Movie from "./Movie";
 
 class App extends React.Component{
   state = {
@@ -23,8 +24,14 @@ class App extends React.Component{
       data: { 
         data: { movies } 
       } 
-    }  = await axios.get("https://yts-proxy.nomadcoders1.now.sh/list_movies.json");
-    console.log(movies);
+    }  = await axios.get("https://yts-proxy.nomadcoders1.now.sh/list_movies.json?sort_by=rating");
+    // console.log(movies);
+
+    // 첫번째 movies = state 의 movies
+    // 두번째 movies = axios 의 movies
+    // this.setState({ movies : movies });
+    // but ec6 는 이해하고 짧게 하길 선호하기에 아래코드도 가능
+    this.setState({ movies, isLoading : false }); // 하나의 setState에서 state에 있는 두 개의 상태를 변경했다
   }
 
   componentDidMount() {
@@ -32,10 +39,24 @@ class App extends React.Component{
   }
 
   render() {
-    const { isLoading } = this.state;
+    const { isLoading, movies } = this.state;
     return (
     <div>
-      {isLoading ? "Loading..." : "We are Ready!!" }
+      {isLoading ? (
+        "Loading..."
+        ) : (
+      
+          movies.map(item => {
+            console.log(item);
+            return(
+            <Movie id={item.id} year={item.year} title={item.title} summary={item.summary} poster={item.medium_cover_image} />
+            );
+
+          })
+
+
+        )
+      }
     </div> 
     );
   }
